@@ -25,8 +25,10 @@ class TestLoader(unittest.TestCase):
         geolocator = get_geolocator()
         result = fetch_location_data(geolocator, "asdfqwer1234")
 
-        self.assertIsNone(result,
-                          "A nonexistent location should have an empty result.")
+        self.assertEqual(result["location"], "asdfqwer1234")
+        self.assertIsNone(result["latitude"])
+        self.assertIsNone(result["longitude"])
+        self.assertIsNone(result['type'])
 
 
 if __name__ == "__main__":
